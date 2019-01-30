@@ -1,8 +1,6 @@
 // from data.js
 var tableData = data;
 
-// YOUR CODE HERE!
-
 //set variable = to tbody tag
 var tBody = d3.select('tbody');
 
@@ -23,3 +21,15 @@ function buildTable(data) {
 };
 
 buildTable(tableData);
+
+
+var input = d3.select('input');
+var button = d3.select('#filter-btn');
+
+button.on('click', function() {
+    d3.event.preventDefault();
+    var newInput = input.property('value');
+    var filterData = tableData.filter(row => row.datetime === newInput);
+    buildTable(filterData);
+});
+
